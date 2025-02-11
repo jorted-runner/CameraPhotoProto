@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct CameraPhotoProtoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PhotosListView()
         }
+        .modelContainer(for: SampleModel.self)
     }
 }

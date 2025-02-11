@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct SampleView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
     let sample: SampleModel
     var body: some View {
         VStack {
@@ -19,8 +21,23 @@ struct SampleView: View {
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding()
+            HStack {
+                Button("Edit") {
+                    
+                }
+                Button("Delete", role: .destructive) {
+                    modelContext.delete(sample)
+                    try? modelContext.save()
+                    dismiss()
+                }
+            }
+            .buttonStyle(.borderedProminent)
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            Spacer()
         }
         .padding()
+        .navigationTitle("Sample View")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

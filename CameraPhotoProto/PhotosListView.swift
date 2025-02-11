@@ -30,7 +30,7 @@ struct PhotosListView: View {
                                     .frame(width: 50, height: 50)
                                     .clipShape(
                                         RoundedRectangle(
-                                            cornerRadius: 12,
+                                            cornerRadius: 12
                                         )
                                     )
                                     .padding(.trailing)
@@ -51,7 +51,7 @@ struct PhotosListView: View {
                 }
             }
             .navigationDestination(for: SampleModel.self) { sample in
-                
+                SampleView(sample: sample)
             }
             .navigationTitle(Text("Picker or Camera"))
             .toolbar {
